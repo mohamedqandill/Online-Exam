@@ -18,7 +18,7 @@ abstract class AppTheme {
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(
         color: AppColors.blackShades[50],
-        size: 20.sp,
+        size: 21.sp,
       ),
     ),
     buttonTheme: ButtonThemeData(
