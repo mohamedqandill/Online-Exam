@@ -4,8 +4,10 @@ import 'package:online_exam/core/routes/app_routes.dart';
 
 import 'core/routes/routes.dart';
 import 'core/theme/app_theme.dart';
+import 'di.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

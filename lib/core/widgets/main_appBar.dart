@@ -10,6 +10,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       title: Text(
         Constants.survey,
         style: Theme.of(context)
@@ -21,6 +22,5 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size(double.infinity, 50);
 }
