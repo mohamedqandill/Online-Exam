@@ -13,7 +13,6 @@ class ExploreCubit extends Cubit<ExploreState> {
   List<Subjects> subjects = [];
   int _page = 1;
   int _numberOfPage = 0;
-  bool _isLoadMore = false;
   final ScrollController scrollController = ScrollController();
 
   Future<List<Subjects>> getAllSubjects() async {
