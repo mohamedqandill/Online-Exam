@@ -12,10 +12,12 @@ abstract class AppTheme {
       error: AppColors.red,
       onError: AppColors.lightRed,
       surface: AppColors.blackShades[50]!,
-      onSurface: AppColors.lightGreen);
+      onSurface: AppColors.grey);
 
   static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: AppColors.white,
     appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent,
       iconTheme: IconThemeData(
         color: AppColors.blackShades[50],
         size: 21.sp,
@@ -33,21 +35,22 @@ abstract class AppTheme {
       showSelectedLabels: true,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      labelStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(50.sp),
+          Radius.circular(20.sp),
         ),
         borderSide: BorderSide(width: 2.w, color: AppColors.grey),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(50.sp),
+          Radius.circular(20.sp),
         ),
         borderSide: BorderSide(width: 2.w, color: AppColors.grey),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(50.sp),
+          Radius.circular(20.sp),
         ),
         borderSide: BorderSide(width: 2.w, color: AppColors.grey),
       ),

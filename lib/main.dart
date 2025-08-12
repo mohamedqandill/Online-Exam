@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/routes/app_routes.dart';
 
+import 'core/routes/routes.dart';
 import 'core/theme/app_theme.dart';
 
 void main() {
@@ -21,7 +22,17 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.getRoute,
+        initialRoute: Routes.main,
       ),
     );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
