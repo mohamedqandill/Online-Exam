@@ -18,22 +18,23 @@ class ExploreView extends StatelessWidget {
         ..onSubjectScroll(),
       child: BlocConsumer<ExploreCubit, ExploreState>(
         listener: (context, state) {
-          if (state is GetSubjectsLoading) {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            );
-          }
-          if (state is GetSubjectsSuccess) {
-            Navigator.pop(context);
-          }
+          // if (state is GetSubjectsLoading) {
+          //   showDialog(
+          //     context: context,
+          //     builder: (context) {
+          //       return const Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     },
+          //   );
+          // }
+          // if (state is GetSubjectsSuccess) {
+          //   Navigator.pop(context);
+          // }
         },
         builder: (context, state) {
           var cubit = BlocProvider.of<ExploreCubit>(context);
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

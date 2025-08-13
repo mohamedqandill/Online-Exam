@@ -4,6 +4,9 @@ import 'package:online_exam/core/utils/app_colors.dart';
 
 abstract class AppTheme {
   static final ColorScheme _colorScheme = ColorScheme(
+      onBackground: AppColors.white,
+      background: AppColors.white,
+
       brightness: Brightness.light,
       primary: AppColors.blueShades[50]!,
       onPrimary: AppColors.lightBlue,
