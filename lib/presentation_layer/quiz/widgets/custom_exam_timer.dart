@@ -63,7 +63,7 @@ class _CustomExamTimerState extends State<CustomExamTimer> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.blueShades[60],
-                    padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 14),
+                    padding: EdgeInsets.symmetric(horizontal: 64.w, vertical: 14.h),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -106,7 +106,7 @@ class _CustomExamTimerState extends State<CustomExamTimer> {
 
     return Row(
       children: [
-        Image.asset(AppAssets.alarm,width: 24,height: 30),
+        Image.asset(AppAssets.alarm, width: 24,height: 30),
         const SizedBox(width: 4),
         Text(
           formatTime(remainingSeconds),

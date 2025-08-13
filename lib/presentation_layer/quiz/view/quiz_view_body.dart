@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/utils/constatnts.dart';
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_exam_progress_bar.dart';
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_questions_page_view.dart';
@@ -81,7 +82,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge
-                      ?.copyWith(fontSize: 20),
+                      ?.copyWith(fontSize: 20.sp),
                 ),
               ),
 

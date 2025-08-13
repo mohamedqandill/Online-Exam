@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/utils/app_colors.dart';
 
 class CustomOptionsQuestion extends StatefulWidget {
@@ -40,31 +41,32 @@ class _CustomOptionsQuestionState extends State<CustomOptionsQuestion> {
           return GestureDetector(
             onTap: () => toggleOption(index),
             child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 6),
-              padding: const EdgeInsets.all(12),
+              margin: EdgeInsets.symmetric(vertical: 6.h),
               decoration: BoxDecoration(
-                color: isSelected ? AppColors.blueShades[10] : AppColors.lightBlue,
-                borderRadius: BorderRadius.circular(10),
+                color: isSelected
+                    ? AppColors.blueShades[10]
+                    : AppColors.lightBlue,
+                borderRadius: BorderRadius.circular(10.r),
               ),
-                child: Row(
-                  children: [
-                    Icon(
-                      isSelected
-                          ? Icons.radio_button_checked
-                          : Icons.radio_button_unchecked,
-                      color: AppColors.blueShades[60],
-                    ),
+              child: Row(
+                children: [
+                  Radio<bool>(
+                    value: true,
+                    groupValue: isSelected,
+                    activeColor: AppColors.blueShades[60],
+                    onChanged: (_) => toggleOption(index),
+                  ),
 
-                    const SizedBox(width: 10),
+                  const SizedBox(width: 10),
 
-                    Expanded(
-                      child: Text(
-                        widget.options[index],
-                        style: Theme.of(context).textTheme.bodySmall
-                      ),
+                  Expanded(
+                    child: Text(
+                      widget.options[index],
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
-                  ],
-                )
+                  ),
+                ],
+              ),
             ),
           );
         }),
