@@ -38,9 +38,8 @@ class _CustomOptionsQuestionState extends State<CustomOptionsQuestion> {
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 6.h),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? AppColors.blueShades[10]
-                  : AppColors.lightBlue,
+              color:
+                  isSelected ? AppColors.blueShades[10] : AppColors.lightBlue,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -55,7 +54,7 @@ class _CustomOptionsQuestionState extends State<CustomOptionsQuestion> {
                 Expanded(
                   child: Text(
                     widget.options[index],
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
               ],

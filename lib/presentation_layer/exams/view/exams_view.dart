@@ -5,6 +5,7 @@ import 'package:online_exam/core/widgets/main_appBar.dart';
 import 'package:online_exam/presentation_layer/exams/manager/exams_cubit.dart';
 import 'package:online_exam/presentation_layer/main_layouts/explore/view/explore_view.dart';
 
+import '../../../core/routes/routes.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/constatnts.dart';
 import '../../../core/widgets/custom_empty_data_widget.dart';
@@ -71,15 +72,19 @@ class ExamsView extends StatelessWidget {
                                     SliverList.separated(
                                       itemCount: cubit.exams.length,
                                       itemBuilder: (context, index) {
-                                        return CustomExamContainer(
-                                          quizTitle:
-                                              cubit.exams[index].title ?? "",
-                                          durationNumber: cubit
-                                              .exams[index].duration
-                                              .toString(),
-                                          questionNumber: cubit
-                                              .exams[index].numberOfQuestions
-                                              .toString(),
+                                        return InkWell(
+                                          onTap: () => Navigator.pushNamed(
+                                              context, Routes.quiz),
+                                          child: CustomExamContainer(
+                                            quizTitle:
+                                                cubit.exams[index].title ?? "",
+                                            durationNumber: cubit
+                                                .exams[index].duration
+                                                .toString(),
+                                            questionNumber: cubit
+                                                .exams[index].numberOfQuestions
+                                                .toString(),
+                                          ),
                                         );
                                       },
                                       separatorBuilder: (context, index) {

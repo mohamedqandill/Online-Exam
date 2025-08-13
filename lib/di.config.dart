@@ -8,68 +8,68 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i4;
-import 'package:get_it/get_it.dart' as _i1;
-import 'package:injectable/injectable.dart' as _i2;
-import 'package:pretty_dio_logger/src/pretty_dio_logger.dart' as _i3;
+import 'package:dio/dio.dart' as _i361;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:pretty_dio_logger/src/pretty_dio_logger.dart' as _i59;
 
-import 'api_layer/api_service/api_service.dart' as _i5;
-import 'api_layer/data_source/get_all_subjects_ds_imp.dart' as _i7;
-import 'api_layer/data_source/get_exams_on_subject_ds_imp.dart' as _i12;
-import 'api_layer/module/api_module.dart' as _i18;
-import 'data_layer/data_source/get_all_subjects_ds.dart' as _i6;
-import 'data_layer/data_source/get_exam_on_subject_ds.dart' as _i11;
-import 'data_layer/repos/get_all_subjects_repo_impl.dart' as _i9;
-import 'data_layer/repos/get_exams_on_subject_repo_impl.dart' as _i14;
-import 'domain_layer/repos/get_all_subjects_repo.dart' as _i8;
-import 'domain_layer/repos/get_exams_on_subject_repo.dart' as _i13;
-import 'domain_layer/use_cases/get_all_subjects_use_case.dart' as _i10;
-import 'domain_layer/use_cases/get_exams_on_subjects_use_case.dart' as _i16;
-import 'presentation_layer/exams/manager/exams_cubit.dart' as _i17;
+import 'api_layer/api_service/api_service.dart' as _i362;
+import 'api_layer/data_source/get_all_subjects_ds_imp.dart' as _i152;
+import 'api_layer/data_source/get_exams_on_subject_ds_imp.dart' as _i647;
+import 'api_layer/module/api_module.dart' as _i434;
+import 'data_layer/data_source/get_all_subjects_ds.dart' as _i659;
+import 'data_layer/data_source/get_exam_on_subject_ds.dart' as _i145;
+import 'data_layer/repos/get_all_subjects_repo_impl.dart' as _i1022;
+import 'data_layer/repos/get_exams_on_subject_repo_impl.dart' as _i916;
+import 'domain_layer/repos/get_all_subjects_repo.dart' as _i248;
+import 'domain_layer/repos/get_exams_on_subject_repo.dart' as _i540;
+import 'domain_layer/use_cases/get_all_subjects_use_case.dart' as _i90;
+import 'domain_layer/use_cases/get_exams_on_subjects_use_case.dart' as _i901;
+import 'presentation_layer/exams/manager/exams_cubit.dart' as _i177;
 import 'presentation_layer/main_layouts/explore/manager/explore_cubit.dart'
-    as _i15;
+    as _i830;
 
-extension GetItInjectableX on _i1.GetIt {
+extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i1.GetIt init({
+  _i174.GetIt init({
     String? environment,
-    _i2.EnvironmentFilter? environmentFilter,
+    _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i2.GetItHelper(
+    final gh = _i526.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
     final apiModule = _$ApiModule();
-    gh.singleton<_i3.PrettyDioLogger>(() => apiModule.provideDioLogger());
+    gh.singleton<_i59.PrettyDioLogger>(() => apiModule.provideDioLogger());
     gh.factory<String>(
       () => apiModule.baseUrl,
       instanceName: 'BaseUrl',
     );
-    gh.singleton<_i4.Dio>(
-        () => apiModule.provideDio(gh<_i3.PrettyDioLogger>()));
-    gh.factory<_i5.ApiService>(() => _i5.ApiService(
-          gh<_i4.Dio>(),
+    gh.singleton<_i361.Dio>(
+        () => apiModule.provideDio(gh<_i59.PrettyDioLogger>()));
+    gh.factory<_i362.ApiService>(() => _i362.ApiService(
+          gh<_i361.Dio>(),
           baseUrl: gh<String>(instanceName: 'BaseUrl'),
         ));
-    gh.factory<_i6.GetAllSubjectsDataSource>(
-        () => _i7.GetAllSubjectsDataSourceImp(gh<_i5.ApiService>()));
-    gh.factory<_i8.GetAllSubjectsRepo>(
-        () => _i9.GetAllSubjectsRepoImpl(gh<_i6.GetAllSubjectsDataSource>()));
-    gh.factory<_i10.GetAllSubjectsUseCase>(
-        () => _i10.GetAllSubjectsUseCase(gh<_i8.GetAllSubjectsRepo>()));
-    gh.factory<_i11.GetExamOnSubjectDs>(
-        () => _i12.GetExamsOnSubjectDSImpl(gh<_i5.ApiService>()));
-    gh.factory<_i13.GetExamsOnSubjectsRepo>(
-        () => _i14.GetExamsOnSubjectsRepoImpl(gh<_i11.GetExamOnSubjectDs>()));
-    gh.factory<_i15.ExploreCubit>(
-        () => _i15.ExploreCubit(gh<_i10.GetAllSubjectsUseCase>()));
-    gh.factory<_i16.GetExamsOnSubjectUseCase>(
-        () => _i16.GetExamsOnSubjectUseCase(gh<_i13.GetExamsOnSubjectsRepo>()));
-    gh.factory<_i17.ExamsCubit>(
-        () => _i17.ExamsCubit(gh<_i16.GetExamsOnSubjectUseCase>()));
+    gh.factory<_i145.GetExamOnSubjectDs>(
+        () => _i647.GetExamsOnSubjectDSImpl(gh<_i362.ApiService>()));
+    gh.factory<_i659.GetAllSubjectsDataSource>(
+        () => _i152.GetAllSubjectsDataSourceImp(gh<_i362.ApiService>()));
+    gh.factory<_i540.GetExamsOnSubjectsRepo>(
+        () => _i916.GetExamsOnSubjectsRepoImpl(gh<_i145.GetExamOnSubjectDs>()));
+    gh.factory<_i248.GetAllSubjectsRepo>(() =>
+        _i1022.GetAllSubjectsRepoImpl(gh<_i659.GetAllSubjectsDataSource>()));
+    gh.factory<_i90.GetAllSubjectsUseCase>(
+        () => _i90.GetAllSubjectsUseCase(gh<_i248.GetAllSubjectsRepo>()));
+    gh.factory<_i830.ExploreCubit>(
+        () => _i830.ExploreCubit(gh<_i90.GetAllSubjectsUseCase>()));
+    gh.factory<_i901.GetExamsOnSubjectUseCase>(() =>
+        _i901.GetExamsOnSubjectUseCase(gh<_i540.GetExamsOnSubjectsRepo>()));
+    gh.factory<_i177.ExamsCubit>(
+        () => _i177.ExamsCubit(gh<_i901.GetExamsOnSubjectUseCase>()));
     return this;
   }
 }
 
-class _$ApiModule extends _i18.ApiModule {}
+class _$ApiModule extends _i434.ApiModule {}

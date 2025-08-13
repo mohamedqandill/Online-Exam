@@ -5,6 +5,7 @@ import 'package:online_exam/core/utils/constatnts.dart';
 import 'package:online_exam/di.dart';
 import 'package:online_exam/presentation_layer/main_layouts/explore/manager/explore_cubit.dart';
 
+import '../../../../core/routes/routes.dart';
 import '../widgets/custom_subject_container.dart';
 
 class ExploreView extends StatelessWidget {
@@ -18,21 +19,6 @@ class ExploreView extends StatelessWidget {
         ..onSubjectScroll(),
       child: BlocConsumer<ExploreCubit, ExploreState>(
         listener: (context, state) {},
-        listener: (context, state) {
-          // if (state is GetSubjectsLoading) {
-          //   showDialog(
-          //     context: context,
-          //     builder: (context) {
-          //       return const Center(
-          //         child: CircularProgressIndicator(),
-          //       );
-          //     },
-          //   );
-          // }
-          // if (state is GetSubjectsSuccess) {
-          //   Navigator.pop(context);
-          // }
-        },
         builder: (context, state) {
           var cubit = BlocProvider.of<ExploreCubit>(context);
           return Column(
@@ -70,9 +56,17 @@ class ExploreView extends StatelessWidget {
                       sliver: SliverList.separated(
                         itemCount: cubit.subjects.length,
                         itemBuilder: (context, index) {
-                          return CustomSubjectContainer(
-                            icon: cubit.subjects[index].icon ?? "",
-                            name: cubit.subjects[index].name ?? "",
+                          return InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, Routes.exams,
+                                  arguments: SubjectData(
+                                      id: cubit.subjects[index].id,
+                                      title: cubit.subjects[index].name));
+                            },
+                            child: CustomSubjectContainer(
+                              icon: cubit.subjects[index].icon ?? "",
+                              name: cubit.subjects[index].name ?? "",
+                            ),
                           );
                         },
                         separatorBuilder: (context, index) {
@@ -89,4 +83,10 @@ class ExploreView extends StatelessWidget {
       ),
     );
   }
+}
+
+class SubjectData {
+  final String? id;
+  final String? title;
+  SubjectData({required this.title, required this.id});
 }
