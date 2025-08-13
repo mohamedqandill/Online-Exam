@@ -4,6 +4,7 @@ import 'package:online_exam/main.dart';
 import 'package:online_exam/presentation_layer/main_layouts/main_layout.dart';
 
 import '../../presentation_layer/exams/view/exams_view.dart';
+import '../../presentation_layer/quiz/view/quiz_view.dart';
 
 abstract class AppRoutes {
   static Route<dynamic> getRoute(RouteSettings settings) {
@@ -13,6 +14,10 @@ abstract class AppRoutes {
       case Routes.exams:
         return MaterialPageRoute(
             builder: (_) => const ExamsView(), settings: settings);
+
+      case Routes.quiz:
+        return MaterialPageRoute(builder: (_) => const QuizView());
+
       default:
         return MaterialPageRoute(builder: (_) => const Home());
     }

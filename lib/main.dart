@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.getRoute,
-        initialRoute: Routes.main,
+        initialRoute: Routes.quiz,
       ),
     );
   }
