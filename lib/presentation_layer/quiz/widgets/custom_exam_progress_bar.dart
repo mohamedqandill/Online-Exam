@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:online_exam/core/utils/app_colors.dart';
+
+class CustomExamProgressBar extends StatelessWidget {
+  final int currentQuestion;
+  final int totalQuestions;
+
+  const CustomExamProgressBar({
+    super.key,
+    required this.currentQuestion,
+    required this.totalQuestions,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double progressValue = currentQuestion / totalQuestions;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          "Question 1 of 20",
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall,
+        ),
+
+        const SizedBox(height: 3),
+
+        LinearProgressIndicator(
+          value: progressValue,
+          minHeight: 6,
+          backgroundColor: Colors.grey[300],
+          color: AppColors.blueShades[60],
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ],
+    );
+  }
+}
