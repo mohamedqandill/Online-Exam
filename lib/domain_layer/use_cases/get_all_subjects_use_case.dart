@@ -10,6 +10,7 @@ class GetAllSubjectsUseCase {
   GetAllSubjectsRepo _getAllSubjectsRepo;
   GetAllSubjectsUseCase(this._getAllSubjectsRepo);
 
-  Future<Either<ServerExceptions, SubjectWithPagination>> call({int? page}) =>
-      _getAllSubjectsRepo.getAllSubjects(page: page);
+  Future<Either<ServerExceptions, SubjectWithPagination>> call(
+          {int? page}) async =>
+      await _getAllSubjectsRepo.getAllSubjects(page: page);
 }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/api_layer/models/response/exams_response.dart';
 import 'package:online_exam/api_layer/models/response/subjects_response.dart';
 import 'package:online_exam/core/utils/api_endpoints.dart';
 import 'package:retrofit/retrofit.dart';
@@ -20,4 +21,8 @@ abstract class ApiService {
   Future<SubjectsResponse> getSubjects(
       {@Query(Constants.limit) int? limit = 7,
       @Query(Constants.page) int? page = 1});
+
+  @GET(EndPoints.getExamOnSubject)
+  Future<ExamsResponseDTO> getExamsOnSubject(
+      {@Query(Constants.subject) required String subjectId});
 }
