@@ -17,11 +17,19 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   int _selectedIndex = 0;
-  List<Widget> _screens = [const ExploreView(), const ResultView()];
+  final List<Widget> _screens = [const ExploreView(), const ResultView()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(),
+      appBar: MainAppBar(
+        title: Text(
+          Constants.survey,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(fontSize: 25.sp, color: AppColors.blueShades[50]),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
           selectedLabelStyle: TextStyle(
               color: AppColors.blueShades[50], fontWeight: FontWeight.bold),
