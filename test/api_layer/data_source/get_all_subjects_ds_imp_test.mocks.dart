@@ -3,10 +3,12 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:online_exam/api_layer/api_service/api_service.dart' as _i3;
+import 'package:online_exam/api_layer/api_service/api_service.dart' as _i4;
+import 'package:online_exam/api_layer/models/response/exams_response.dart'
+    as _i3;
 import 'package:online_exam/api_layer/models/response/subjects_response.dart'
     as _i2;
 
@@ -34,16 +36,27 @@ class _FakeSubjectsResponse_0 extends _i1.SmartFake
         );
 }
 
+class _FakeExamsResponseDTO_1 extends _i1.SmartFake
+    implements _i3.ExamsResponseDTO {
+  _FakeExamsResponseDTO_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i3.ApiService {
+class MockApiService extends _i1.Mock implements _i4.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.SubjectsResponse> getSubjects({
+  _i5.Future<_i2.SubjectsResponse> getSubjects({
     int? limit = 7,
     int? page = 1,
   }) =>
@@ -57,7 +70,7 @@ class MockApiService extends _i1.Mock implements _i3.ApiService {
           },
         ),
         returnValue:
-            _i4.Future<_i2.SubjectsResponse>.value(_FakeSubjectsResponse_0(
+            _i5.Future<_i2.SubjectsResponse>.value(_FakeSubjectsResponse_0(
           this,
           Invocation.method(
             #getSubjects,
@@ -68,5 +81,25 @@ class MockApiService extends _i1.Mock implements _i3.ApiService {
             },
           ),
         )),
-      ) as _i4.Future<_i2.SubjectsResponse>);
+      ) as _i5.Future<_i2.SubjectsResponse>);
+
+  @override
+  _i5.Future<_i3.ExamsResponseDTO> getExamsOnSubject(
+          {required String? subjectId}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getExamsOnSubject,
+          [],
+          {#subjectId: subjectId},
+        ),
+        returnValue:
+            _i5.Future<_i3.ExamsResponseDTO>.value(_FakeExamsResponseDTO_1(
+          this,
+          Invocation.method(
+            #getExamsOnSubject,
+            [],
+            {#subjectId: subjectId},
+          ),
+        )),
+      ) as _i5.Future<_i3.ExamsResponseDTO>);
 }

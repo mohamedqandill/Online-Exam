@@ -50,6 +50,7 @@ dependencies:
   skeletonizer:
   mockito:
   equatable:
+  shimmer:
 
 
 dev_dependencies:
