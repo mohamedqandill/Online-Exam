@@ -21,8 +21,7 @@ class GetAllSubjectsDataSourceImp implements GetAllSubjectsDataSource {
     try {
       final response = await _apiService.getSubjects(page: page);
       var result = SubjectWithPagination(
-          subjects:
-              response.subjects?.map((dto) => dto.toSubject()).toList() ?? [],
+          subjects: response.subjects?.map((dto) => dto.toSubject()).toList() ?? [],
           numberOfPage: response.pagination!.numberOfPages);
       return Right(result);
     } on DioException catch (e) {
