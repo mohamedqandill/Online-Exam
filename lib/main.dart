@@ -5,6 +5,7 @@ import 'package:online_exam/core/routes/app_routes.dart';
 import 'core/routes/routes.dart';
 import 'core/theme/app_theme.dart';
 import 'di.dart';
+
 //add
 void main() {
   configureDependencies();
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.getRoute,
-        initialRoute: Routes.quiz,
+        initialRoute: Routes.main,
       ),
     );
   }

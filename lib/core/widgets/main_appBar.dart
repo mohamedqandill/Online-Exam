@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../utils/app_colors.dart';
-import '../utils/constatnts.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppBar({super.key});
-
+  const MainAppBar({super.key, this.title, this.leading, this.actions});
+  final Widget? title;
+  final Widget? leading;
+  final List<Widget>? actions;
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      scrolledUnderElevation: 0,
-      title: Text(
-        Constants.survey,
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge
-            ?.copyWith(fontSize: 25.sp, color: AppColors.blueShades[50]),
-      ),
-    );
+        leading: leading ?? const SizedBox(),
+        actions: actions,
+        scrolledUnderElevation: 0,
+        title: title);
   }
 
   @override

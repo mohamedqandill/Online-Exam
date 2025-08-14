@@ -21,7 +21,7 @@ class ExploreCubit extends Cubit<ExploreState> {
       if (!isPagination) {
         emit(GetSubjectsLoading());
       } else {
-        isLoading = true; // عشان نمنع لود تاني وقت الباجينيشن
+        isLoading = true;
       }
 
       var result = await _getAllSubjectsUseCase.call(page: _page);

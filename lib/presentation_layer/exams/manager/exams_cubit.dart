@@ -8,7 +8,7 @@ part 'exams_state.dart';
 
 @injectable
 class ExamsCubit extends Cubit<ExamsState> {
-  GetExamsOnSubjectUseCase _getExamsOnSubjectUseCase;
+  final GetExamsOnSubjectUseCase _getExamsOnSubjectUseCase;
   ExamsCubit(this._getExamsOnSubjectUseCase) : super(ExamsInitial());
 
   List<Exams> exams = [];
