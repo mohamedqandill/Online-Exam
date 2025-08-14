@@ -5,5 +5,5 @@ import '../../domain_layer/models/exams.dart';
 
 abstract class GetExamOnSubjectDs {
   Future<Either<ServerExceptions, List<Exams>>> getExamsOnSubject(
-      {required String subjectId});
+      {required String? subjectId});
 }

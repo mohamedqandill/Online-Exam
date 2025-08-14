@@ -3,12 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i7;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:online_exam/api_layer/api_service/api_service.dart' as _i4;
+import 'package:online_exam/api_layer/api_service/api_service.dart' as _i6;
+import 'package:online_exam/api_layer/models/response/checked_questions_d_t_o.dart'
+    as _i5;
 import 'package:online_exam/api_layer/models/response/exams_response.dart'
     as _i3;
+import 'package:online_exam/api_layer/models/response/question_response.dart'
+    as _i4;
 import 'package:online_exam/api_layer/models/response/subjects_response.dart'
     as _i2;
 
@@ -47,16 +51,38 @@ class _FakeExamsResponseDTO_1 extends _i1.SmartFake
         );
 }
 
+class _FakeQuestionResponseDTO_2 extends _i1.SmartFake
+    implements _i4.QuestionResponseDTO {
+  _FakeQuestionResponseDTO_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeCheckedQuestionsDTO_3 extends _i1.SmartFake
+    implements _i5.CheckedQuestionsDTO {
+  _FakeCheckedQuestionsDTO_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i4.ApiService {
+class MockApiService extends _i1.Mock implements _i6.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.SubjectsResponse> getSubjects({
+  _i7.Future<_i2.SubjectsResponse> getSubjects({
     int? limit = 7,
     int? page = 1,
   }) =>
@@ -70,7 +96,7 @@ class MockApiService extends _i1.Mock implements _i4.ApiService {
           },
         ),
         returnValue:
-            _i5.Future<_i2.SubjectsResponse>.value(_FakeSubjectsResponse_0(
+            _i7.Future<_i2.SubjectsResponse>.value(_FakeSubjectsResponse_0(
           this,
           Invocation.method(
             #getSubjects,
@@ -81,10 +107,10 @@ class MockApiService extends _i1.Mock implements _i4.ApiService {
             },
           ),
         )),
-      ) as _i5.Future<_i2.SubjectsResponse>);
+      ) as _i7.Future<_i2.SubjectsResponse>);
 
   @override
-  _i5.Future<_i3.ExamsResponseDTO> getExamsOnSubject(
+  _i7.Future<_i3.ExamsResponseDTO> getExamsOnSubject(
           {required String? subjectId}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -93,7 +119,7 @@ class MockApiService extends _i1.Mock implements _i4.ApiService {
           {#subjectId: subjectId},
         ),
         returnValue:
-            _i5.Future<_i3.ExamsResponseDTO>.value(_FakeExamsResponseDTO_1(
+            _i7.Future<_i3.ExamsResponseDTO>.value(_FakeExamsResponseDTO_1(
           this,
           Invocation.method(
             #getExamsOnSubject,
@@ -101,5 +127,45 @@ class MockApiService extends _i1.Mock implements _i4.ApiService {
             {#subjectId: subjectId},
           ),
         )),
-      ) as _i5.Future<_i3.ExamsResponseDTO>);
+      ) as _i7.Future<_i3.ExamsResponseDTO>);
+
+  @override
+  _i7.Future<_i4.QuestionResponseDTO> getQuestionsOnExam(
+          {required String? examId}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getQuestionsOnExam,
+          [],
+          {#examId: examId},
+        ),
+        returnValue: _i7.Future<_i4.QuestionResponseDTO>.value(
+            _FakeQuestionResponseDTO_2(
+          this,
+          Invocation.method(
+            #getQuestionsOnExam,
+            [],
+            {#examId: examId},
+          ),
+        )),
+      ) as _i7.Future<_i4.QuestionResponseDTO>);
+
+  @override
+  _i7.Future<_i5.CheckedQuestionsDTO> checkQuestions(
+          {required Map<String, dynamic>? body}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #checkQuestions,
+          [],
+          {#body: body},
+        ),
+        returnValue: _i7.Future<_i5.CheckedQuestionsDTO>.value(
+            _FakeCheckedQuestionsDTO_3(
+          this,
+          Invocation.method(
+            #checkQuestions,
+            [],
+            {#body: body},
+          ),
+        )),
+      ) as _i7.Future<_i5.CheckedQuestionsDTO>);
 }

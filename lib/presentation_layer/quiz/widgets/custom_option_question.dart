@@ -4,11 +4,13 @@ import 'package:online_exam/core/utils/app_colors.dart';
 
 class CustomOptionsQuestion extends StatefulWidget {
   final List<String> options;
+  final String questions;
   final ValueChanged<int> onChanged;
 
   const CustomOptionsQuestion({
     super.key,
     required this.options,
+    required this.questions,
     required this.onChanged,
   });
 
@@ -28,9 +30,12 @@ class _CustomOptionsQuestionState extends State<CustomOptionsQuestion> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(widget.options.length, (index) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        widget.questions,
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 20.sp),
+      ),
+      ...List.generate(widget.options.length, (index) {
         final isSelected = selectedIndex == index;
 
         return GestureDetector(
@@ -62,6 +67,6 @@ class _CustomOptionsQuestionState extends State<CustomOptionsQuestion> {
           ),
         );
       }),
-    );
+    ]);
   }
 }

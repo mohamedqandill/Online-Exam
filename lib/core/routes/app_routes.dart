@@ -16,7 +16,8 @@ abstract class AppRoutes {
             builder: (_) => const ExamsView(), settings: settings);
 
       case Routes.quiz:
-        return MaterialPageRoute(builder: (_) => const QuizView());
+        return MaterialPageRoute(
+            builder: (_) => const QuizView(), settings: settings);
 
       default:
         return MaterialPageRoute(builder: (_) => const Home());
