@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam_one/presentation_layer/quiz/view/quiz_view_body.dart';
+
+import '../../../core/utils/constatnts.dart';
+import '../widgets/custom_quiz_app_bar.dart';
+
+class QuizView extends StatelessWidget {
+  const QuizView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const CustomQuizAppBar(),
+      body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0.h,horizontal: Constants.appSecoundPadding),
+            child: const QuizViewBody(),
+          )
+      ),
+    );
+  }
+}
