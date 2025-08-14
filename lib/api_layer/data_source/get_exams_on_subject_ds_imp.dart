@@ -16,10 +16,10 @@ class GetExamsOnSubjectDSImpl implements GetExamOnSubjectDs {
 
   @override
   Future<Either<ServerExceptions, List<Exams>>> getExamsOnSubject(
-      {required String subjectId}) async {
+      {required String? subjectId}) async {
     try {
       final response =
-          await _apiService.getExamsOnSubject(subjectId: subjectId);
+          await _apiService.getExamsOnSubject(subjectId: subjectId!);
       var result = response.exams!
           .map(
             (dto) => dto.toExams(),

@@ -22,12 +22,15 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(
-        title: Text(
-          Constants.survey,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(fontSize: 25.sp, color: AppColors.blueShades[50]),
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            Constants.survey,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(fontSize: 25.sp, color: AppColors.blueShades[50]),
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -8,6 +8,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+        leadingWidth: 10,
         leading: leading ?? const SizedBox(),
         actions: actions,
         scrolledUnderElevation: 0,

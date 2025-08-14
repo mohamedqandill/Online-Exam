@@ -5,6 +5,7 @@ abstract class Constants {
   static const String explore = "Explore";
   static const String result = "Result";
   static const String search = "Search";
+  static const String finish = "Finish";
   static const String subject = "subject";
   static const String language = "Language";
   static const String english = "English";
@@ -13,6 +14,7 @@ abstract class Constants {
   static const String page = "page";
 
   static const String exam = 'Exam';
+  static const String examAPi = 'exam';
   static const String quizTitle = 'Select the correctly punctuated sentence.';
   static const String back = "Back";
   static const String next = "Next";

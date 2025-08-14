@@ -37,9 +37,12 @@ class ExamsView extends StatelessWidget {
                 ),
                 leading: InkWell(
                   onTap: () => Navigator.pop(context),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 30.sp,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 30.sp,
+                    ),
                   ),
                 ),
               ),
@@ -74,7 +77,8 @@ class ExamsView extends StatelessWidget {
                                       itemBuilder: (context, index) {
                                         return InkWell(
                                           onTap: () => Navigator.pushNamed(
-                                              context, Routes.quiz),
+                                              context, Routes.quiz,
+                                              arguments: cubit.exams[index].id),
                                           child: CustomExamContainer(
                                             quizTitle:
                                                 cubit.exams[index].title ?? "",

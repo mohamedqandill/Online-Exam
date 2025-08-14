@@ -5,6 +5,7 @@ import 'package:online_exam/core/utils/app_scroll_behavior.dart';
 class CustomQuestionsPageView extends StatelessWidget {
   final PageController controller;
   final List<Widget> pages;
+
   final void Function(int)? onPageChanged;
 
   const CustomQuestionsPageView({
@@ -17,7 +18,7 @@ class CustomQuestionsPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300.h,
+      height: 320.h,
       child: PageView(
         onPageChanged: onPageChanged,
         scrollBehavior: NoGlowScrollBehavior(),
