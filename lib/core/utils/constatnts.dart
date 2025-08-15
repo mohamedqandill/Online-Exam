@@ -4,6 +4,7 @@ abstract class Constants {
   static const String survey = "Survey";
   static const String explore = "Explore";
   static const String result = "Result";
+  static const String results = "Results";
   static const String search = "Search";
   static const String subject = "subject";
   static const String language = "Language";
