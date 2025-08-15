@@ -4,6 +4,7 @@ import 'package:online_exam/main.dart';
 import 'package:online_exam/presentation_layer/main_layouts/main_layout.dart';
 import 'package:online_exam/presentation_layer/score/views/score_view.dart';
 
+import '../../presentation_layer/answers/view/answers_view.dart';
 import '../../presentation_layer/exams/view/exams_view.dart';
 import '../../presentation_layer/quiz/view/quiz_view.dart';
 
@@ -22,6 +23,9 @@ abstract class AppRoutes {
       case Routes.score:
         return MaterialPageRoute(
             builder: (_) => const ScoreView(), settings: settings);
+      case Routes.answers:
+        return MaterialPageRoute(
+            builder: (_) => const AnswersView(), settings: settings);
 
       default:
         return MaterialPageRoute(builder: (_) => const Home());
