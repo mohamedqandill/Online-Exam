@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:online_exam_one/core/utils/app_colors.dart';
+import '../../../core/utils/app_colors.dart';
 
 class CustomScoreCircleProgress extends StatefulWidget {
   final int correct;
