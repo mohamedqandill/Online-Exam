@@ -4,4 +4,5 @@ abstract class Routes {
   static const String exams = "exams";
   static const String quiz = "quiz";
   static const String score = "score";
+  static const String answers = "answers";
 }
