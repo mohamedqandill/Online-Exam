@@ -25,7 +25,7 @@ class _MainLayoutState extends State<MainLayout> {
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            Constants.survey,
+            _selectedIndex == 0 ? Constants.survey : Constants.results,
             style: Theme.of(context)
                 .textTheme
                 .titleLarge
