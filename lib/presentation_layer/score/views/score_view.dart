@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam_one/presentation_layer/quiz/view/score_view_body.dart';
+import 'package:online_exam_one/presentation_layer/score/views/score_view_body.dart';
 import '../../../core/utils/constatnts.dart';
 
 class ScoreView extends StatelessWidget {
@@ -33,7 +33,7 @@ class ScoreView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16.w),
-          child: ScoreViewBody(),
+          child: const ScoreViewBody(),
         ),
       ),
     );

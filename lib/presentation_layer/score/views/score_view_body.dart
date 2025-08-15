@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_one/core/utils/app_colors.dart';
 import 'package:online_exam_one/core/utils/constatnts.dart';
-import 'package:online_exam_one/presentation_layer/quiz/widgets/custom_score_widget.dart';
-
+import 'package:online_exam_one/presentation_layer/score/widgets/custom_score_circle_progress.dart';
 import '../../../core/routes/routes.dart';
 
 class ScoreViewBody extends StatelessWidget {
@@ -108,7 +107,6 @@ class ScoreViewBody extends StatelessWidget {
 
         const SizedBox(height: 80),
 
-
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
@@ -160,7 +158,6 @@ class ScoreViewBody extends StatelessWidget {
             ),
           ),
         )
-
       ],
     );
   }
