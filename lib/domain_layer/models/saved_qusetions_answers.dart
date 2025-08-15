@@ -1,11 +1,16 @@
 class SavedExams {
   String examId;
-
+  String examTitle;
+  int examDuration;
+  int numberOfQuestions;
   List<SavedAnswers> savedAnswers;
 
   SavedExams({
     required this.examId,
     required this.savedAnswers,
+    required this.numberOfQuestions,
+    required this.examDuration,
+    required this.examTitle,
   });
 }
 

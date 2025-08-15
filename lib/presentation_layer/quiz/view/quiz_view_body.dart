@@ -8,8 +8,6 @@ import 'package:online_exam/presentation_layer/quiz/widgets/custom_exam_progress
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_questions_page_view.dart';
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_quiz_buttons.dart';
 
-import '../../../core/routes/routes.dart';
-
 class QuizViewBody extends StatefulWidget {
   const QuizViewBody({super.key});
 
@@ -64,25 +62,18 @@ class _QuizViewBodyState extends State<QuizViewBody> {
                             }
                           },
                           onNext: () async {
+                            // last question
                             if (cubit.currentQuestion ==
                                 cubit.pages.length - 1) {
-                              Navigator.pushReplacementNamed(
-                                  context, Routes.score,
-                                  arguments: {
-                                    "checkedQuestion": cubit.checkedQuestions,
-                                    "examId": cubit.questions
-                                        .questions?[cubit.questionIndex].examId
-                                  });
+                              await cubit.saveQuestionAnswers();
+                              cubit.navigateToScoreScreen(context);
                             } else if (cubit.currentQuestion <
                                     cubit.pages.length - 1 &&
                                 cubit.isAnswerSelected()) {
                               cubit.isAnswerSelect = false;
                               cubit.addToCheckedQuestions();
-                              await cubit.saveQuestionAnswers();
-                              cubit.pageController.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                              );
+
+                              cubit.nextPageView();
                             } else {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(SnackBar(

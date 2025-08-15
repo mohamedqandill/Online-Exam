@@ -7,6 +7,7 @@ import 'package:online_exam/domain_layer/models/questions.dart';
 import 'package:online_exam/domain_layer/models/saved_qusetions_answers.dart';
 import 'package:online_exam/domain_layer/use_cases/get_questions_on_exam_use_case.dart';
 
+import '../../../core/routes/routes.dart';
 import '../widgets/custom_option_question.dart';
 
 part 'quiz_state.dart';
@@ -81,16 +82,34 @@ class QuizCubit extends Cubit<QuizState> {
 
   Future<void> saveQuestionAnswers() async {
     await ExamsHiveHelper.saveExam(SavedExams(
-      examId: questions.questions![questionIndex].examId!,
-      savedAnswers: [
-        SavedAnswers(
-          questionId: questions.questions![questionIndex].id!,
-          correctAnswer: questions.questions![questionIndex].correctAnswer!,
-          userAnswer: questions
-              .questions![questionIndex].answers![selectedQuestion].key!,
-        )
-      ],
-    ));
+        examDuration: questions.questions![questionIndex].duration!,
+        examTitle: questions.questions![questionIndex].examTitle!,
+        numberOfQuestions:
+            questions.questions![questionIndex].numberOfQuestions!,
+        examId: questions.questions![questionIndex].examId!,
+        savedAnswers: checkedQuestions
+            .map(
+              (e) => SavedAnswers(
+                  questionId: e.questionId!,
+                  correctAnswer:
+                      questions.questions![questionIndex].correctAnswer!,
+                  userAnswer: e.userAnswers!),
+            )
+            .toList()));
+  }
+
+  Future<void> navigateToScoreScreen(BuildContext context) async {
+    Navigator.pushReplacementNamed(context, Routes.score, arguments: {
+      "checkedQuestion": checkedQuestions,
+      "examId": questions.questions?[questionIndex].examId
+    });
+  }
+
+  nextPageView() {
+    pageController.nextPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
