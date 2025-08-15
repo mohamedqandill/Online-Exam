@@ -23,6 +23,7 @@ class QuizCubit extends Cubit<QuizState> {
   int currentQuestion = 0;
   int questionIndex = 0;
   int selectedQuestion = 0;
+  SavedExams? savedExam;
 
   List<Widget> pages = [];
   List<CheckedQuestions> checkedQuestions = [];
@@ -50,6 +51,14 @@ class QuizCubit extends Cubit<QuizState> {
   bool isAnswerSelected() {
     print(isAnswerSelect);
     return isAnswerSelect;
+  }
+
+  getSavedExam(String examId) async {
+    savedExam = await ExamsHiveHelper.getExamById(examId);
+    print(savedExam!.examId);
+    print(savedExam!.savedAnswers.length);
+    print(savedExam!.examTitle);
+    emit(GetSavedExam());
   }
 
   buildQuestionPages() {
@@ -87,15 +96,19 @@ class QuizCubit extends Cubit<QuizState> {
         numberOfQuestions:
             questions.questions![questionIndex].numberOfQuestions!,
         examId: questions.questions![questionIndex].examId!,
-        savedAnswers: checkedQuestions
-            .map(
-              (e) => SavedAnswers(
-                  questionId: e.questionId!,
-                  correctAnswer:
-                      questions.questions![questionIndex].correctAnswer!,
-                  userAnswer: e.userAnswers!),
-            )
-            .toList()));
+        savedAnswers: checkedQuestions.map(
+          (e) {
+            final question =
+                questions.questions!.firstWhere((q) => q.id == e.questionId);
+            print("userAnswer ${e.userAnswers!}");
+            print("correctAnswer ${question.correctAnswer!}");
+
+            return SavedAnswers(
+                questionId: e.questionId!,
+                correctAnswer: question.correctAnswer!,
+                userAnswer: e.userAnswers!);
+          },
+        ).toList()));
   }
 
   Future<void> navigateToScoreScreen(BuildContext context) async {

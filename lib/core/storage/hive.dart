@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:hive/hive.dart';
 
 import '../../domain_layer/models/saved_qusetions_answers.dart';
@@ -7,11 +5,26 @@ import '../../domain_layer/models/saved_qusetions_answers.dart';
 abstract class ExamsHiveHelper {
   static String boxName = 'saved_exams';
 
-  static Future<Map?> getExamById(String examId) async {
+  static Future<SavedExams?> getExamById(String examId) async {
     var box = Hive.isBoxOpen(boxName)
         ? Hive.box(boxName)
         : await Hive.openBox(boxName);
-    return box.get(examId);
+    final data = box.get(examId);
+    if (data == null) return null;
+
+    return SavedExams(
+      examId: data["examId"],
+      examDuration: data["duration"],
+      numberOfQuestions: data["noOfQuestions"],
+      examTitle: data["title"],
+      savedAnswers: (data["savedAnswers"] as List)
+          .map((a) => SavedAnswers(
+                questionId: a["questionId"],
+                correctAnswer: a["correctAnswer"],
+                userAnswer: a["userAnswer"],
+              ))
+          .toList(),
+    );
   }
 
   static Future<void> clearHive() async {
@@ -62,10 +75,5 @@ abstract class ExamsHiveHelper {
               })
           .toList(),
     });
-    log(exam.examTitle);
-    log(exam.examDuration.toString());
-    log(exam.examId);
-    log(exam.numberOfQuestions.toString());
-    log(exam.savedAnswers.length.toString());
   }
 }
