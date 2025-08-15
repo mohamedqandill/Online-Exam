@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:online_exam_one/core/utils/app_colors.dart';
+import 'package:flutter/material.dart';
+
+import '../../../core/utils/app_colors.dart';
 
 class CustomScoreCircleProgress extends StatefulWidget {
   final int correct;
@@ -24,7 +25,8 @@ class CustomScoreCircleProgress extends StatefulWidget {
       _CustomScoreCircleProgressState();
 }
 
-class _CustomScoreCircleProgressState extends State<CustomScoreCircleProgress> with SingleTickerProviderStateMixin {
+class _CustomScoreCircleProgressState extends State<CustomScoreCircleProgress>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   late double percent;
@@ -79,10 +81,8 @@ class _CustomScoreCircleProgressState extends State<CustomScoreCircleProgress> w
                   strokeWidth: widget.strokeWidth,
                 ),
               ),
-              Text(
-                "${(_animation.value * 100).toInt()}%",
-                style: Theme.of(context).textTheme.titleLarge
-              ),
+              Text("${(_animation.value * 100).toInt()}%",
+                  style: Theme.of(context).textTheme.titleLarge),
             ],
           ),
         );

@@ -5,16 +5,25 @@ abstract class Constants {
   static const String explore = "Explore";
   static const String result = "Result";
   static const String search = "Search";
-  static const String finish = "Finish";
   static const String subject = "subject";
   static const String language = "Language";
+  static const String examApi = "exam";
   static const String english = "English";
+  static const String finish = "Finish";
   static const String browseByCategory = "Browse by subject";
   static const String limit = "limit";
   static const String page = "page";
 
+  static const String page2 = "page";
+
+  static const String yourScore = 'Your score';
+  static const String showResults = 'Show results';
+  static const String pleaseSelectAnswer = 'Please Answer The Question';
+
+  static const String startAgain = 'Start again';
   static const String exam = 'Exam';
-  static const String examAPi = 'exam';
+  static const String correct = 'Correct';
+  static const String inCorrect = 'Incorrect';
   static const String quizTitle = 'Select the correctly punctuated sentence.';
   static const String back = "Back";
   static const String next = "Next";
