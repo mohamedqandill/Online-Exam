@@ -25,6 +25,7 @@ class QuizCubit extends Cubit<QuizState> {
 
   List<Widget> pages = [];
   List<CheckedQuestions> checkedQuestions = [];
+  bool isAnswerSelect = false;
 
   Future<void> getQuestionsOnExam({required String examId}) async {
     try {
@@ -45,6 +46,11 @@ class QuizCubit extends Cubit<QuizState> {
     }
   }
 
+  bool isAnswerSelected() {
+    print(isAnswerSelect);
+    return isAnswerSelect;
+  }
+
   buildQuestionPages() {
     pages = List.generate(
       questions.questions!.length,
@@ -57,6 +63,7 @@ class QuizCubit extends Cubit<QuizState> {
               )
               .toList(),
           onChanged: (selectedOption) async {
+            isAnswerSelect = true;
             selectedQuestion = selectedOption;
             questionIndex = index;
           },
@@ -70,8 +77,6 @@ class QuizCubit extends Cubit<QuizState> {
         questionId: questions.questions![questionIndex].id,
         userAnswers: questions
             .questions![questionIndex].answers![selectedQuestion].key));
-    print(questions.questions![questionIndex].id);
-    print(questions.questions![questionIndex].answers![selectedQuestion].key);
   }
 
   Future<void> saveQuestionAnswers() async {

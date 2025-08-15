@@ -39,6 +39,7 @@ import 'presentation_layer/exams/manager/exams_cubit.dart' as _i177;
 import 'presentation_layer/main_layouts/explore/manager/explore_cubit.dart'
     as _i830;
 import 'presentation_layer/quiz/manager/quiz_cubit.dart' as _i553;
+import 'presentation_layer/score/manager/score_cubit.dart' as _i698;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -89,6 +90,8 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i888.GetCheckedAnswersInfoRepo>()));
     gh.factory<_i901.GetExamsOnSubjectUseCase>(() =>
         _i901.GetExamsOnSubjectUseCase(gh<_i540.GetExamsOnSubjectsRepo>()));
+    gh.factory<_i698.ScoreCubit>(
+        () => _i698.ScoreCubit(gh<_i733.GetCheckedAnswersInfoUseCase>()));
     gh.factory<_i838.GetQuestionsOnExamUseCase>(() =>
         _i838.GetQuestionsOnExamUseCase(gh<_i659.GetQuestionOnExamRepo>()));
     gh.factory<_i177.ExamsCubit>(

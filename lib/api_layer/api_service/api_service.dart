@@ -7,11 +7,8 @@ import 'package:online_exam/api_layer/models/response/subjects_response.dart';
 import 'package:online_exam/core/utils/api_endpoints.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../core/utils/api_endpoints.dart';
 import '../../core/utils/constatnts.dart';
 
-import '../models/response/exams_response.dart';
-import '../models/response/subjects_response.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: Constants.baseURL)
@@ -33,7 +30,7 @@ abstract class ApiService {
 
   @GET(EndPoints.getQuestionOnExam)
   Future<QuestionResponseDTO> getQuestionsOnExam(
-      {@Query(Constants.examAPi) required String examId});
+      {@Query(Constants.examApi) required String examId});
 
   @POST(EndPoints.check)
   Future<CheckedQuestionsDTO> checkQuestions(

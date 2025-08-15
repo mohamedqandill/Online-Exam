@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/core/utils/constatnts.dart';
 import 'package:online_exam/core/widgets/custom_loading.dart';
 import 'package:online_exam/presentation_layer/quiz/manager/quiz_cubit.dart';
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_exam_progress_bar.dart';
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_questions_page_view.dart';
 import 'package:online_exam/presentation_layer/quiz/widgets/custom_quiz_buttons.dart';
+
+import '../../../core/routes/routes.dart';
 
 class QuizViewBody extends StatefulWidget {
   const QuizViewBody({super.key});
@@ -61,14 +64,35 @@ class _QuizViewBodyState extends State<QuizViewBody> {
                             }
                           },
                           onNext: () async {
-                            if (cubit.currentQuestion <
+                            if (cubit.currentQuestion ==
                                 cubit.pages.length - 1) {
+                              Navigator.pushReplacementNamed(
+                                  context, Routes.score,
+                                  arguments: {
+                                    "checkedQuestion": cubit.checkedQuestions,
+                                    "examId": cubit.questions
+                                        .questions?[cubit.questionIndex].examId
+                                  });
+                            } else if (cubit.currentQuestion <
+                                    cubit.pages.length - 1 &&
+                                cubit.isAnswerSelected()) {
+                              cubit.isAnswerSelect = false;
                               cubit.addToCheckedQuestions();
                               await cubit.saveQuestionAnswers();
                               cubit.pageController.nextPage(
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
                               );
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                      content: Text(
+                                Constants.pleaseSelectAnswer,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(color: Colors.white),
+                              )));
                             }
                           },
                         ),
