@@ -20,6 +20,7 @@ class CustomQuestionsPageView extends StatelessWidget {
     return SizedBox(
       height: 320.h,
       child: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         onPageChanged: onPageChanged,
         scrollBehavior: NoGlowScrollBehavior(),
         controller: controller,
