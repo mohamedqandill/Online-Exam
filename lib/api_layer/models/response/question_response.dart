@@ -25,6 +25,7 @@ class QuestionResponseDTO {
       questions: questions?.map(
         (e) {
           return SingleQuestion(
+              examTitle: e.exam?.title,
               examId: e.exam?.Id,
               id: e.Id,
               questionTitle: e.question,

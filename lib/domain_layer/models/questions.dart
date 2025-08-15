@@ -11,6 +11,7 @@ class SingleQuestion {
   String? questionTitle;
   String? type;
   String? correctAnswer;
+  String? examTitle;
   List<Answers>? answers;
   int? duration;
   int? numberOfQuestions;
@@ -19,6 +20,7 @@ class SingleQuestion {
   SingleQuestion(
       {required this.id,
       required this.questionTitle,
+      required this.examTitle,
       required this.examId,
       required this.type,
       required this.correctAnswer,
