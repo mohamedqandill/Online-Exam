@@ -12,6 +12,8 @@ abstract class Constants {
   static const String limit = "limit";
   static const String page = "page";
 
+  static const String page2 = "page";
+
   static const String yourScore = 'Your score';
   static const String showResults = 'Show results';
   static const String startAgain = 'Start again';
